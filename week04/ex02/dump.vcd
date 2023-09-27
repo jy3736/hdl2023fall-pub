@@ -1,0 +1,33 @@
+$date
+	Wed Sep 27 15:29:56 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module adder2_tb $end
+$var wire 2 ! z [1:0] $end
+$var wire 1 " c $end
+$var reg 2 # x [1:0] $end
+$var reg 2 $ y [1:0] $end
+$scope module u1 $end
+$var wire 2 % a [1:0] $end
+$var wire 2 & b [1:0] $end
+$var wire 2 ' sum [1:0] $end
+$var wire 1 " carry $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b10 '
+b0 &
+b1 %
+b0 $
+b1 #
+0"
+b10 !
+$end
+#100
