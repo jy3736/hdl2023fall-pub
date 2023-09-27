@@ -1,0 +1,10 @@
+# Check if $GIT_PC is set, otherwise use "Young" as the default value
+if [ -z "$GIT_PC" ]; then
+  GIT_PC="Young"
+fi
+
+# Perform git operations
+git pull
+git add .
+git commit -m "$GIT_PC"
+git push
