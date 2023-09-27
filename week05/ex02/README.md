@@ -1,54 +1,53 @@
-## Exercise 1: Verilog Comparator Module (cmp4)
+## Exercise 2: Verilog Odd Number Detector (isodd)
 
-You are tasked with simulating a Verilog module named cmp4 that serves as a 4-bit binary comparator. This module takes two 4-bit inputs, a and b, and produces three outputs, gt, eq, and lt, indicating the comparison results between a and b.
+You are tasked with simulating a Verilog module named isodd that serves as an odd number detector. This module takes a 4-bit input a and produces a single output x, which indicates whether the input number is odd or even.
 
-The comparison results are defined as follows:
-- gt (Greater Than): This output is asserted (1) when a is greater than b.
-- eq (Equal To): This output is asserted (1) when a is equal to b.
-- lt (Less Than): This output is asserted (1) when a is less than b.
+The functionality of the isodd module is defined as follows:
+- The output x is asserted (1) when the least significant bit (LSB) of the input a is 1, indicating that the input number is odd.
+- The output x is de-asserted (0) when the LSB of the input a is 0, indicating that the input number is even.
 
-Your task is to create a Verilog testbench for the cmp4 module to verify its functionality. The testbench should provide various test cases to cover different comparison scenarios and should display the results of the comparisons at each simulation step.
+Your task is to create a Verilog testbench for the isodd module to verify its functionality. The testbench should provide various test cases to cover different scenarios of odd and even numbers and should display the results accordingly.
 
 *Verify your solution locally.*
 ```
-$ iverilog -o ex01 testbench.v
-$ ./ex01 
-                   0  0  0 0 1 0
-                  10  2  4 0 0 1
-                  20  8  1 1 0 0
-                  30  0  9 0 0 1
-                  40  6  3 1 0 0
+$ iverilog -o ex02 testbench.v
+$ ./ex02
+VCD info: dumpfile isodd_tb.vcd opened for output.
+                   0 0000 0
+                  10 0100 0
+                  20 0001 1
+                  30 1001 1
+                  40 0011 1
 ...
 Omitted for the sake of conciseness...
 ...
-                 930  1  2 0 0 1
-                 940  7 14 0 0 1
-                 950  6 13 0 0 1
-                 960  3  9 0 0 1
-                 970  1 15 0 0 1
-                 980 13  3 1 0 0
-                 990  8  5 1 0 0
-                1000  7  8 0 0 1
+                 950 1101 1
+                 960 1001 1
+                 970 1111 1
+                 980 0011 1
+                 990 0101 1
+                1000 1000 0
 ```
 
 *Run the testing script to validate your solution.*
 ```
 $ python ../testing.pyc 
 Compilation successful.
-                   0  0  0 0 1 0
-                  10  2  4 0 0 1
-                  20  8  1 1 0 0
-                  30  0  9 0 0 1
-                  40  6  3 1 0 0
+VCD info: dumpfile isodd_tb.vcd opened for output.
+                   0 0000 0
+                  10 0100 0
+                  20 0001 1
+                  30 1001 1
+                  40 0011 1
 ...
 Omitted for the sake of conciseness...
 ...
-
-                 960  3  9 0 0 1
-                 970  1 15 0 0 1
-                 980 13  3 1 0 0
-                 990  8  5 1 0 0
-                1000  7  8 0 0 1
+                 950 1101 1
+                 960 1001 1
+                 970 1111 1
+                 980 0011 1
+                 990 0101 1
+                1000 1000 0
 
 Test PASSED.
 ```
@@ -57,9 +56,11 @@ Test PASSED.
 ```
  $ python ../testing.pyc 
 Compilation successful.
-                   0  0  0 0 1 0
-                  10  2  4 0 0 0
-Error: a= 2, b= 4, gt=0, eq=0, lt=0
+VCD info: dumpfile isodd_tb.vcd opened for output.
+                   0 0000 0
+                  10 0100 0
+                  20 0001 0
+Error: 0 != 00000000000000000000000000000001
 
 Execution Error
 ```
