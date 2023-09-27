@@ -1,6 +1,6 @@
 # Check if $GIT_PC is set, otherwise use "Young" as the default value
 if [ -z "$GIT_PC" ]; then
-  GIT_PC="Young"
+  GIT_PC="hdl2023fall"
 fi
 
 # Perform git operations
