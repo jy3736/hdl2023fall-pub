@@ -1,66 +1,66 @@
-## Exercise 2: Verilog Odd Number Detector (isodd)
+## Exercise 2: Simple Router Module Design
 
-You are tasked with simulating a Verilog module named isodd that serves as an odd number detector. This module takes a 4-bit input a and produces a single output x, which indicates whether the input number is odd or even.
+You have been tasked with designing a basic router module as illustrated below. This router module is equipped with two input ports, 'a' and 'b,' as well as two output ports, 'x' and 'y.' The 'sel' input signal is used to determine the connection between the input and output ports based on the following routing table:
 
-The functionality of the isodd module is defined as follows:
-- The output x is asserted (1) when the least significant bit (LSB) of the input a is 1, indicating that the input number is odd.
-- The output x is de-asserted (0) when the LSB of the input a is 0, indicating that the input number is even.
+- When sel = 0, 'a' is routed to 'x,' and 'b' is routed to 'y.'
+- When sel = 1, 'a' is routed to 'y,' and 'b' is routed to 'x.'
+- When sel = 2, 'a' is routed to both 'x' and 'y.'
+- When sel = 3, 'b' is routed to both 'x' and 'y.'
+- For all other values of sel, '0' is routed to both 'x' and 'y.'
 
-Your task is to create a Verilog testbench for the isodd module to verify its functionality. The testbench should provide various test cases to cover different scenarios of odd and even numbers and should display the results accordingly.
+Here's the Verilog code for the router module:
 
-*Verify your solution locally.*
+```verilog
+module router(
+    input [7:0] a,
+    input [7:0] b,
+    input [1:0] sel,
+    output [7:0] x,
+    output [7:0] y
+);
 ```
-$ iverilog -o ex02 testbench.v
-$ ./ex02
-VCD info: dumpfile isodd_tb.vcd opened for output.
-                   0 0000 0
-                  10 0100 0
-                  20 0001 1
-                  30 1001 1
-                  40 0011 1
+
+*Simulate your design locally.*
+```shell
+[ex02]$ iverilog -o ex02 simulation.v 
+[ex02]$ ls
+README.md  ex02  router.v  simulation.v testbench.v.enc
+[ex02]$ ./ex02
+VCD info: dumpfile wave.vcd opened for output.
+                   0   0   0 0   0   0
+                 100  77  73 0  77  73
+                 200  87 160 1 160  87
+                 300  53 130 1 130  53
+                 400  21 152 3 152 152
 ...
-Omitted for the sake of conciseness...
+... (omitted for brevity)
 ...
-                 950 1101 1
-                 960 1001 1
-                 970 1111 1
-                 980 0011 1
-                 990 0101 1
-                1000 1000 0
+                9600 121 206 1 206 121
+                9700 163 199 3 199 199
+                9800 253 180 3 180 180
+                9900  75 225 1 225  75
+               10000  34  30 0  34  30
 ```
 
 *Run the testing script to validate your solution.*
-```
-$ python ../testing.pyc 
+```shell
+[ex02]$ python ../testing.pyc
 Compilation successful.
-VCD info: dumpfile isodd_tb.vcd opened for output.
-                   0 0000 0
-                  10 0100 0
-                  20 0001 1
-                  30 1001 1
-                  40 0011 1
+VCD info: dumpfile wave.vcd opened for output.
+                   0   0   0 0   0   0
+                 100  77  73 0  77  73
+                 300  87 160 1 160  87
+                 500  53 130 1 130  53
+                 700  21 152 3 152 152
+                 900  94 195 1 195  94
 ...
-Omitted for the sake of conciseness...
+... (omitted for brevity)
 ...
-                 950 1101 1
-                 960 1001 1
-                 970 1111 1
-                 980 0011 1
-                 990 0101 1
-                1000 1000 0
+               19100 121 206 1 206 121
+               19300 163 199 3 199 199
+               19500 253 180 3 180 180
+               19700  75 225 1 225  75
+               19900  34  30 0  34  30
 
 Test PASSED.
-```
-
-*If an error occurred, you might encounter an error message like this:*
-```
- $ python ../testing.pyc 
-Compilation successful.
-VCD info: dumpfile isodd_tb.vcd opened for output.
-                   0 0000 0
-                  10 0100 0
-                  20 0001 0
-Error: 0 != 00000000000000000000000000000001
-
-Execution Error
 ```
