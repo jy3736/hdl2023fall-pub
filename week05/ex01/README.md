@@ -1,6 +1,6 @@
 ## Exercise 1: Decoder Design
 
-Design a decoder module that takes a 4-bit vector (din) as input and produces the following outputs: 'odd,' 'even,' and 'zero.' You must use an always statement to implement the `decode` module. The module name and interface are as follows:
+Design a decoder module that takes a 4-bit vector (din) as input and produces the following outputs: 'odd,' 'even,' and 'zero.' You must use always and if statements to implement the `decode` module. The module name and interface are as follows:
 
 ```verilog
 module decode(
