@@ -1,0 +1,9 @@
+#! /usr/bin/bash
+
+# display error message when execute this script not in the exercise/problem directory
+if [ ! -f testbench.v.enc ]; then
+    echo "Error: Please execute this script in the exercise/problem directory."
+    exit 1
+fi
+
+python ../.tools/testing.pyc
