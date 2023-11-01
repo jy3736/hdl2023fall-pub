@@ -1,4 +1,4 @@
-## 16x8-bit Register File
+## Midterm Problem 01
 
 In this exercise, you are asked to design a 16x8-bit register file for a 8-bit processor. The register file has two read ports and one write port. The register file is synchronous and the clock frequency is 100MHz. The register file has the following interface:
 

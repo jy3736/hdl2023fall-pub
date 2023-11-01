@@ -1,4 +1,4 @@
-## 16-bit BCD Full Adder
+## Midterm Problem 2
 
 In this exercise, you will be tasked with implementing a 16-bit BCD full adder using structural-level Verilog. It's essential to have already completed Exercise 1, where you designed your 4-bit BCD full adder (`bcdfadd4`), as this exercise relies on it for completion.
 

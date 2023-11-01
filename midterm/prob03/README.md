@@ -1,4 +1,4 @@
-## Simple Router Module Design
+## Midterm Problem 3
 
 You have been tasked with designing a basic router module as illustrated below. This router module is equipped with two input ports, 'a' and 'b,' as well as two output ports, 'x' and 'y.' The 'sel' input signal is used to determine the connection between the input and output ports based on the following routing table:
 
